@@ -109,7 +109,7 @@ def load_raw(path: Path | str = RAW_PATH, sample: int | None = None) -> pd.DataF
 
 def _to_float(s: pd.Series) -> pd.Series:
     """Numeric parse that tolerates strings such as "45.3%" or " 13.99 "."""
-    if s.dtype == object or str(s.dtype).startswith("string"):
+    if s.dtype == object or pd.api.types.is_string_dtype(s):  # object (pandas 2) or str (pandas 3)
         s = s.astype("string").str.replace("%", "", regex=False).str.strip()
     return pd.to_numeric(s, errors="coerce").astype("float64")
 
@@ -117,7 +117,7 @@ def _to_float(s: pd.Series) -> pd.Series:
 def parse_types(df: pd.DataFrame) -> pd.DataFrame:
     """Coerce numeric columns (incl. percentage strings) and tidy categorical labels."""
     df = df.copy()
-    if df["issue_d"].dtype == object:
+    if not pd.api.types.is_datetime64_any_dtype(df["issue_d"]):
         df["issue_d"] = pd.to_datetime(df["issue_d"], format=DATE_FORMAT, errors="coerce")
     text_cols = set(CATEGORICAL_FEATURES) | set(STRING_COLS) | set(ID_COLS) | {"grade", "sub_grade"}
     for col in raw_columns():

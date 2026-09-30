@@ -48,7 +48,7 @@ def select_features(iv: pd.DataFrame, woe_train: pd.DataFrame) -> tuple[list[str
 
 
 def _fit(X: pd.DataFrame, y) -> LogisticRegression:
-    model = LogisticRegression(penalty=None, solver="lbfgs", max_iter=1000,
+    model = LogisticRegression(C=np.inf, solver="lbfgs", max_iter=1000,
                                random_state=RANDOM_STATE)
     return model.fit(X, y)
 
