@@ -55,3 +55,9 @@ def cutoff_summary(scored: pd.DataFrame, cutoff: float) -> dict:
     """Same fields as ``cutoff_table`` for a single cut-off."""
     row = _cutoff_rows(scored, np.array([float(cutoff)])).iloc[0]
     return {k: (int(v) if k.startswith("n_") else float(v)) for k, v in row.items()}
+
+
+def cutoff_for_approval_rate(table: pd.DataFrame, target: float) -> float:
+    """Highest cut-off in ``table`` that still approves at least ``target`` of applicants."""
+    ok = table.loc[table["approval_rate"] >= target, "cutoff"]
+    return float(ok.max()) if len(ok) else float(table["cutoff"].min())

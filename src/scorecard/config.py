@@ -21,7 +21,9 @@ RANDOM_STATE = 42
 # Only 36-month loans: the snapshot ends 2018Q4, so a 36m loan issued by Dec-2015 has
 # reached contractual maturity and its outcome is (almost always) fully observed.
 TERM_MONTHS = 36
-DEV_START = "2012-01-01"   # development window (train + in-time test)
+# 2012 is excluded: ~52% of bureau fields (tot_cur_bal, num_actv_rev_tl, ...) are missing
+# for 2012 vintages vs ~0% from 2013 — a data-collection gap, not borrower behaviour.
+DEV_START = "2013-01-01"   # development window (train + in-time test)
 DEV_END = "2014-12-31"
 OOT_START = "2015-01-01"   # out-of-time validation window
 OOT_END = "2015-12-31"
@@ -109,6 +111,9 @@ LEAKAGE_COLUMNS = {
 
 # Candidate raw fields dropped if missing share in the development window exceeds this.
 MAX_MISSING_SHARE = 0.30
+# Exempt from that rule: "months since last X" is blank when X never happened, so missing
+# is informative (it gets its own WOE bin) rather than a data-quality problem.
+INFORMATIVE_MISSING = ["mths_since_last_delinq", "mths_since_last_record", "mths_since_recent_inq"]
 
 # --------------------------------------------------------------------------- binning / selection
 MAX_FINE_BINS = 10
@@ -132,3 +137,31 @@ SCORE_MIN, SCORE_MAX = 300, 850
 # --------------------------------------------------------------------------- cut-off grid
 CUTOFF_STEP = 5
 N_DECILES = 10
+
+# --------------------------------------------------------------------------- risk bands / app
+# (minimum score, label), best band first. A score falls in the first band whose minimum it
+# meets. With the 650 @ 10:1, PDO 50 scaling these thresholds imply PDs of roughly
+# 2.8% (740), 6% (680), 13% (620) and 26% (560) -- i.e. each band step about doubles the risk.
+RISK_BANDS = [
+    (740, "Very Low"),
+    (680, "Low"),
+    (620, "Medium"),
+    (560, "High"),
+    (SCORE_MIN, "Very High"),
+]
+# The simulator opens at the highest cut-off that still approves at least this share of applicants.
+DEFAULT_APPROVAL_TARGET = 0.80
+MODEL_FILENAME = "model.json"    # coefficients + scaling + loss params (numpy-only scoring)
+POWERBI_DIRNAME = "powerbi"      # tidy CSV exports for the optional Power BI report
+
+# --------------------------------------------------------------------------- interpretation aids
+# Conventional rules of thumb used to label validation results in the dashboard.
+PSI_STABLE = 0.10      # PSI below this: population is stable
+PSI_SHIFT = 0.25       # PSI above this: significant shift; in between: moderate
+IV_BANDS = [           # (upper bound, label): information value -> predictive strength
+    (0.02, "Not useful"),
+    (0.10, "Weak"),
+    (0.30, "Medium"),
+    (0.50, "Strong"),
+    (float("inf"), "Suspiciously strong"),
+]

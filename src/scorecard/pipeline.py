@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import logging
 import math
+import shutil
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -21,8 +22,12 @@ from scorecard.config import (
     FIGURES,
     ID_COLS,
     LOSS_CALIBRATION_COLS,
+    MODEL_FILENAME,
     PDO,
+    POWERBI_DIRNAME,
     RAW_PATH,
+    SCORE_MAX,
+    SCORE_MIN,
     SQL_DIR,
     TARGET,
 )
@@ -31,6 +36,7 @@ from scorecard.data import assign_split, load_raw, make_target, parse_types
 from scorecard.features import engineer, feature_columns, high_missing_features
 from scorecard.loss import calibrate_lgd_ead, expected_loss, realised_loss
 from scorecard.model import fit_logit, predict_pd, select_features
+from scorecard.predict import input_defaults, model_payload
 from scorecard.scoring import factor, offset, pd_to_score, points_score, scorecard_points
 from scorecard.sql import run_sql
 from scorecard.validation import (
@@ -113,6 +119,21 @@ def _score_frame(df: pd.DataFrame, lgd: float, ead_ratio: float) -> pd.DataFrame
     df["el"] = expected_loss(df["pd"], df["loan_amnt"], lgd, ead_ratio)
     df["realised_loss"] = realised_loss(df)
     return df
+
+
+POWERBI_FILES = ["cutoff_table.csv", "sql_score_band_summary.csv", "decile_table_oot.csv"]
+
+
+def _export_powerbi(artifacts_dir: Path) -> list[Path]:
+    """Copy existing tables into ``artifacts/powerbi/`` for Power BI (no new analytics)."""
+    out = artifacts_dir / POWERBI_DIRNAME
+    out.mkdir(parents=True, exist_ok=True)
+    written = []
+    for name in POWERBI_FILES:
+        target = out / name.replace("sql_", "")
+        shutil.copyfile(artifacts_dir / name, target)
+        written.append(target)
+    return written
 
 
 def _backtest(d: pd.DataFrame) -> dict:
@@ -207,6 +228,9 @@ def run(raw_path: Path | str = RAW_PATH, sample: int | None = None, *,
                  "suspicious_iv": selection["suspicious_iv"]},
                 artifacts_dir / "data_summary.json")
     binner.to_json(artifacts_dir / "woe_bins.json")
+    scaling = metrics["score_scaling"] | {"score_min": SCORE_MIN, "score_max": SCORE_MAX}
+    _write_json(model_payload(final, model.intercept_[0], model.coef_[0], scaling, loss_params,
+                              input_defaults(train, final)), artifacts_dir / MODEL_FILENAME)
     iv.to_csv(artifacts_dir / "iv_table.csv", index=False)
     binner.bin_table().to_csv(artifacts_dir / "bin_table.csv", index=False)
     points.to_csv(artifacts_dir / "scorecard_points.csv", index=False)
@@ -229,6 +253,7 @@ def run(raw_path: Path | str = RAW_PATH, sample: int | None = None, *,
              "modelling": interim_dir / "modelling.parquet",
              "scored_oot": artifacts_dir / "scored_oot.parquet"},
             out_dir=artifacts_dir, sql_dir=sql_dir)
+    _export_powerbi(artifacts_dir)
     logger.info("pipeline done: OOT AUC %.3f, KS %.3f", metrics["splits"]["oot"]["auc"],
                 metrics["splits"]["oot"]["ks"])
     return metrics

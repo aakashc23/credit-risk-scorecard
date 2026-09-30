@@ -61,5 +61,7 @@ def test_feature_columns_on_synthetic(prepared):
 def test_high_missing_features(prepared):
     train = prepared[prepared["split"] == "train"]
     dropped = high_missing_features(train, feature_columns(prepared), max_share=0.30)
-    assert "mths_since_last_record" in dropped
+    # mths_since_* is mostly blank (= "never happened") but is exempt: missing is informative.
+    assert "mths_since_last_record" not in dropped
     assert "fico_mid" not in dropped
+    assert high_missing_features(train.assign(junk=float("nan")), ["junk"]) == ["junk"]

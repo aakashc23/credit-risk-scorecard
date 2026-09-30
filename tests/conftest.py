@@ -149,3 +149,15 @@ def prepared(raw_csv) -> pd.DataFrame:
 
     df, _ = make_target(parse_types(load_raw(raw_csv)))
     return engineer(assign_split(df))
+
+
+@pytest.fixture(scope="session")
+def synthetic_run(raw_csv, tmp_path_factory):
+    """One full pipeline run on the synthetic data: (metrics, {artifacts, interim, ...} dirs)."""
+    from scorecard.pipeline import run
+
+    root = tmp_path_factory.mktemp("synthetic_run")
+    dirs = {k: root / k for k in ["artifacts", "interim", "processed", "figures"]}
+    metrics = run(raw_csv, artifacts_dir=dirs["artifacts"], interim_dir=dirs["interim"],
+                  processed_dir=dirs["processed"], figures_dir=dirs["figures"])
+    return metrics, dirs

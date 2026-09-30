@@ -8,6 +8,7 @@ from scorecard.config import (
     BENCHMARK_COLS,
     CANDIDATE_FEATURES,
     EXCLUDED_FAIR_LENDING,
+    INFORMATIVE_MISSING,
     LEAKAGE_COLUMNS,
     LOSS_CALIBRATION_COLS,
     MAX_MISSING_SHARE,
@@ -88,6 +89,9 @@ def feature_columns(df: pd.DataFrame) -> list[str]:
 
 def high_missing_features(train: pd.DataFrame, columns: list[str],
                           max_share: float = MAX_MISSING_SHARE) -> list[str]:
-    """Columns whose missing share in ``train`` exceeds ``max_share`` (to be dropped)."""
+    """Columns whose missing share in ``train`` exceeds ``max_share`` (to be dropped).
+
+    Fields in ``INFORMATIVE_MISSING`` are never dropped: blank means "never happened".
+    """
     share = train[columns].isna().mean()
-    return [c for c in columns if share[c] > max_share]
+    return [c for c in columns if share[c] > max_share and c not in INFORMATIVE_MISSING]

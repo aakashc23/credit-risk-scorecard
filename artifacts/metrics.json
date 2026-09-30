@@ -1,0 +1,88 @@
+{
+  "generated_at": "2026-09-30T20:16:09+00:00",
+  "sample": null,
+  "data_file": "lc_accepted_2007_2018Q4_extract.parquet",
+  "splits": {
+    "train": {
+      "n": 184094,
+      "bads": 24285,
+      "bad_rate": 0.13191630362749465,
+      "auc": 0.6629261023099052,
+      "gini": 0.32585220461981046,
+      "ks": 0.23742490631957597
+    },
+    "test": {
+      "n": 78898,
+      "bads": 10408,
+      "bad_rate": 0.13191715886334254,
+      "auc": 0.658464286263394,
+      "gini": 0.3169285725267881,
+      "ks": 0.22570915383552687
+    },
+    "oot": {
+      "n": 283026,
+      "bads": 42132,
+      "bad_rate": 0.14886264866125373,
+      "auc": 0.6694495989341975,
+      "gini": 0.33889919786839506,
+      "ks": 0.24523282347829478
+    }
+  },
+  "benchmark_sub_grade_oot": {
+    "n": 283026,
+    "auc": 0.6786579455534115,
+    "gini": 0.35731589110682305,
+    "ks": 0.2619420392116362
+  },
+  "psi_score_train_to_oot": 0.002349124813114647,
+  "features": [
+    "fico_mid",
+    "annual_inc",
+    "avg_cur_bal",
+    "total_rev_hi_lim",
+    "acc_open_past_24mths",
+    "dti",
+    "num_tl_op_past_12m",
+    "mort_acc",
+    "loan_to_income",
+    "home_ownership",
+    "percent_bc_gt_75",
+    "mo_sin_rcnt_tl",
+    "mths_since_recent_inq",
+    "credit_history_months",
+    "num_actv_rev_tl"
+  ],
+  "n_features": 15,
+  "score_scaling": {
+    "base_score": 650,
+    "base_odds": 10.0,
+    "pdo": 50,
+    "factor": 72.13475204444818,
+    "offset": 483.90359525563184
+  },
+  "loss_params": {
+    "lgd": 0.8849814911191524,
+    "ead_ratio": 0.5730759039398875,
+    "n_defaults": 24285,
+    "total_funded": 294328200.0,
+    "total_ead_at_default": 168672399.27
+  },
+  "el_backtest": {
+    "train": {
+      "expected_loss": 147360568.36506397,
+      "realised_loss": 149282523.8011998,
+      "ratio_expected_to_realised": 0.9871253822135583
+    },
+    "test": {
+      "expected_loss": 62933185.78401602,
+      "realised_loss": 63996331.043600485,
+      "ratio_expected_to_realised": 0.9833874029612706
+    },
+    "oot": {
+      "expected_loss": 232795183.98837495,
+      "realised_loss": 274011577.2407976,
+      "ratio_expected_to_realised": 0.8495815626936002
+    }
+  },
+  "scorecard_points_max_abs_gap_oot": 83.15710699318674
+}

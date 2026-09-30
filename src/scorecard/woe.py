@@ -19,7 +19,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from scipy.stats import spearmanr
 
 from scorecard.config import (
     CATEGORICAL_FEATURES,
@@ -114,6 +113,8 @@ def _make_monotone(n: list, bads: list, edges: list, direction: int) -> None:
 
 def fit_numeric(x: pd.Series, y: np.ndarray) -> dict:
     """Quantile fine bins -> min-size merge -> monotone merge -> <= MAX_COARSE_BINS."""
+    from scipy.stats import spearmanr  # imported here so scoring (the app) does not need scipy
+
     values = x.to_numpy(float)
     miss = np.isnan(values)
     xv, yv = values[~miss], y[~miss]

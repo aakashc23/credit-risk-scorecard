@@ -23,7 +23,7 @@ def test_term_and_window_filter(loaded, raw_frame):
     assert (loaded["term"] == 36).all()
     assert loaded["issue_d"].between(pd.Timestamp(DEV_START), pd.Timestamp(OOT_END)).all()
     year = raw_frame["issue_d"].str[-4:]
-    expected = raw_frame["term"].eq(" 36 months") & year.between("2012", "2015")
+    expected = raw_frame["term"].eq(" 36 months") & year.between(DEV_START[:4], OOT_END[:4])
     assert len(loaded) == expected.sum()
     assert loaded.attrs["n_rows_read"] == len(raw_frame)
 

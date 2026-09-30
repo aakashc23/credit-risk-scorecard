@@ -1,0 +1,67 @@
+{
+  "features": [
+    "fico_mid",
+    "annual_inc",
+    "avg_cur_bal",
+    "total_rev_hi_lim",
+    "acc_open_past_24mths",
+    "dti",
+    "num_tl_op_past_12m",
+    "mort_acc",
+    "loan_to_income",
+    "home_ownership",
+    "percent_bc_gt_75",
+    "mo_sin_rcnt_tl",
+    "mths_since_recent_inq",
+    "credit_history_months",
+    "num_actv_rev_tl"
+  ],
+  "intercept": -1.8868499205939349,
+  "coefficients": {
+    "fico_mid": -0.5413286670345067,
+    "annual_inc": -0.3666504139783068,
+    "avg_cur_bal": -0.15616800146379356,
+    "total_rev_hi_lim": -0.5993047418959315,
+    "acc_open_past_24mths": -0.5781378892001457,
+    "dti": -0.48725002504118015,
+    "num_tl_op_past_12m": -0.4371488400946724,
+    "mort_acc": -0.23215644478949088,
+    "loan_to_income": -0.8831529767544298,
+    "home_ownership": -0.3626190200389824,
+    "percent_bc_gt_75": -0.5639482323451158,
+    "mo_sin_rcnt_tl": -0.13171269395464225,
+    "mths_since_recent_inq": -0.7438216964777841,
+    "credit_history_months": -0.18078557421584143,
+    "num_actv_rev_tl": -0.4772001404338634
+  },
+  "score_scaling": {
+    "base_score": 650,
+    "base_odds": 10.0,
+    "pdo": 50,
+    "factor": 72.13475204444818,
+    "offset": 483.90359525563184,
+    "score_min": 300,
+    "score_max": 850
+  },
+  "loss_params": {
+    "lgd": 0.8849814911191524,
+    "ead_ratio": 0.5730759039398875
+  },
+  "input_defaults": {
+    "loan_amnt": 10050.0,
+    "fico": 687.0,
+    "annual_inc": 60000.0,
+    "avg_cur_bal": 6374.0,
+    "total_rev_hi_lim": 21200.0,
+    "acc_open_past_24mths": 4.0,
+    "dti": 16.81,
+    "num_tl_op_past_12m": 2.0,
+    "mort_acc": 1.0,
+    "home_ownership": "MORTGAGE",
+    "percent_bc_gt_75": 50.0,
+    "mo_sin_rcnt_tl": 6.0,
+    "mths_since_recent_inq": 6.0,
+    "credit_history_months": 175.0,
+    "num_actv_rev_tl": 5.0
+  }
+}

@@ -1,0 +1,11 @@
+issue_year,loan_status,n_loans,pct_of_year
+2013,Fully Paid,88044,87.67
+2013,Charged Off,12378,12.33
+2014,Fully Paid,140255,86.27
+2014,Charged Off,22315,13.73
+2015,Fully Paid,240894,85.07
+2015,Charged Off,42132,14.88
+2015,Current,72,0.03
+2015,Late (31-120 days),61,0.02
+2015,In Grace Period,9,0.0
+2015,Late (16-30 days),5,0.0

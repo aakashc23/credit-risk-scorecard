@@ -14,19 +14,16 @@ ARTIFACT_FILES = [
     "decile_table_train.csv", "decile_table_test.csv", "decile_table_oot.csv",
     "calibration_oot.csv", "cutoff_table.csv", "scored_oot.parquet", "loss_params.json",
     "woe_bins.json", "data_summary.json", "sql_status_mix.csv",
-    "sql_portfolio_by_year_grade.csv", "sql_score_band_summary.csv",
+    "sql_portfolio_by_year_grade.csv", "sql_score_band_summary.csv", "model.json",
+    "powerbi/cutoff_table.csv", "powerbi/score_band_summary.csv", "powerbi/decile_table_oot.csv",
 ]
 FIGURE_FILES = ["iv_bar", "score_distribution", "roc", "ks_curve", "decile_bad_rate",
                 "calibration", "cutoff_tradeoff", "score_vs_grade"]
 
 
 @pytest.fixture(scope="module")
-def outputs(raw_csv, tmp_path_factory):
-    root = tmp_path_factory.mktemp("run")
-    dirs = {k: root / k for k in ["artifacts", "interim", "processed", "figures"]}
-    metrics = run(raw_csv, artifacts_dir=dirs["artifacts"], interim_dir=dirs["interim"],
-                  processed_dir=dirs["processed"], figures_dir=dirs["figures"])
-    return metrics, dirs
+def outputs(synthetic_run):
+    return synthetic_run
 
 
 def test_artifacts_written(outputs):

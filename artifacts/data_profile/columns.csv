@@ -1,0 +1,152 @@
+column,position,non_null,missing_share,numeric_share,examples,kept_in_extract
+id,1,2260701,0.0,0.999985,68407277 | 68355089 | 68341763,True
+member_id,2,0,1.0,,,False
+loan_amnt,3,2260668,1.5e-05,1.0,3600.0 | 24700.0 | 20000.0,True
+funded_amnt,4,2260668,1.5e-05,1.0,3600.0 | 24700.0 | 20000.0,True
+funded_amnt_inv,5,2260668,1.5e-05,1.0,3600.0 | 24700.0 | 20000.0,True
+term,6,2260668,1.5e-05,0.0, 36 months |  60 months,True
+int_rate,7,2260668,1.5e-05,1.0,13.99 | 11.99 | 10.78,True
+installment,8,2260668,1.5e-05,1.0,123.03 | 820.28 | 432.66,True
+grade,9,2260668,1.5e-05,0.0,C | B | F,True
+sub_grade,10,2260668,1.5e-05,0.0,C4 | C1 | B4,True
+emp_title,11,2093699,0.073872,6.4e-05,leadman | Engineer | truck driver,True
+emp_length,12,2113761,0.064998,0.0,10+ years | 3 years | 4 years,True
+home_ownership,13,2260668,1.5e-05,0.0,MORTGAGE | RENT | OWN,True
+annual_inc,14,2260664,1.6e-05,1.0,55000.0 | 65000.0 | 63000.0,True
+verification_status,15,2260668,1.5e-05,0.0,Not Verified | Source Verified | Verified,True
+issue_d,16,2260668,1.5e-05,0.0,Dec-2015 | Nov-2015 | Oct-2015,True
+loan_status,17,2260668,1.5e-05,0.0,Fully Paid | Current | Charged Off,True
+pymnt_plan,18,2260668,1.5e-05,0.0,n | y,True
+url,19,2260668,1.5e-05,0.0,https://lendingclub.com/browse/loanDetail.action?loan_id=684 | https://lendingclub.com/browse/loanDetail.action?loan_id=683 | https://lendingclub.com/browse/loanDetail.action?loan_id=683,False
+desc,20,126067,0.944235,0.0,"We knew that using our credit cards to finance an adoption w | I had a bad year two years ago, with some late and missed pa | Lenders,  I have the ability to pay off my current debt but,",False
+purpose,21,2260668,1.5e-05,0.0,debt_consolidation | small_business | home_improvement,True
+title,22,2237343,0.010332,5.8e-05,Debt consolidation | Business | Major purchase,True
+zip_code,23,2260667,1.5e-05,0.0,190xx | 577xx | 605xx,True
+addr_state,24,2260668,1.5e-05,0.0,PA | SD | IL,True
+dti,25,2258957,0.000771,1.0,5.91 | 16.06 | 10.78,True
+delinq_2yrs,26,2260639,2.7e-05,1.0,0.0 | 1.0 | 2.0,True
+earliest_cr_line,27,2260639,2.7e-05,0.0,Aug-2003 | Dec-1999 | Aug-2000,True
+fico_range_low,28,2260668,1.5e-05,1.0,675.0 | 715.0 | 695.0,True
+fico_range_high,29,2260668,1.5e-05,1.0,679.0 | 719.0 | 699.0,True
+inq_last_6mths,30,2260638,2.8e-05,1.0,1.0 | 4.0 | 0.0,True
+mths_since_last_delinq,31,1102166,0.512467,1.0,30.0 | 6.0 | 12.0,True
+mths_since_last_record,32,359156,0.841131,1.0,106.0 | 75.0 | 30.0,True
+open_acc,33,2260639,2.7e-05,1.0,7.0 | 22.0 | 6.0,True
+pub_rec,34,2260639,2.7e-05,1.0,0.0 | 1.0 | 2.0,True
+revol_bal,35,2260668,1.5e-05,1.0,2765.0 | 21470.0 | 7869.0,True
+revol_util,36,2258866,0.000812,1.0,29.7 | 19.2 | 56.2,True
+total_acc,37,2260639,2.7e-05,1.0,13.0 | 38.0 | 18.0,True
+initial_list_status,38,2260668,1.5e-05,0.0,w | f,True
+out_prncp,39,2260668,1.5e-05,1.0,0.0 | 15897.65 | 9912.88,True
+out_prncp_inv,40,2260668,1.5e-05,1.0,0.0 | 15897.65 | 9912.88,False
+total_pymnt,41,2260668,1.5e-05,1.0,4421.723916800001 | 25679.66 | 22705.924293878397,True
+total_pymnt_inv,42,2260668,1.5e-05,1.0,4421.72 | 25679.66 | 22705.92,False
+total_rec_prncp,43,2260668,1.5e-05,1.0,3600.0 | 24700.0 | 20000.0,True
+total_rec_int,44,2260668,1.5e-05,1.0,821.72 | 979.66 | 2705.92,True
+total_rec_late_fee,45,2260668,1.5e-05,1.0,0.0 | 22.59 | 161.46,True
+recoveries,46,2260668,1.5e-05,1.0,0.0 | 1618.9 | 368.37,True
+collection_recovery_fee,47,2260668,1.5e-05,1.0,0.0 | 291.402 | 66.3066,True
+last_pymnt_d,48,2258241,0.001088,0.0,Jan-2019 | Jun-2016 | Jun-2017,True
+last_pymnt_amnt,49,2260668,1.5e-05,1.0,122.67 | 926.35 | 15813.3,True
+next_pymnt_d,50,915358,0.5951,0.0,Apr-2019 | Mar-2019 | Dec-2018,False
+last_credit_pull_d,51,2260596,4.6e-05,0.0,Mar-2019 | Mar-2018 | May-2017,True
+last_fico_range_high,52,2260668,1.5e-05,1.0,564.0 | 699.0 | 704.0,True
+last_fico_range_low,53,2260668,1.5e-05,1.0,560.0 | 695.0 | 700.0,True
+collections_12_mths_ex_med,54,2260523,7.9e-05,1.0,0.0 | 1.0 | 2.0,True
+mths_since_last_major_derog,55,580775,0.7431,1.0,30.0 | 3.0 | 75.0,False
+policy_code,56,2260668,1.5e-05,1.0,1.0,True
+application_type,57,2260668,1.5e-05,0.0,Individual | Joint App,True
+annual_inc_joint,58,120710,0.946605,1.0,71000.0 | 100000.0 | 77000.0,False
+dti_joint,59,120706,0.946607,1.0,13.85 | 16.4 | 15.4,False
+verification_status_joint,60,115730,0.948808,0.0,Not Verified | Verified | Source Verified,False
+acc_now_delinq,61,2260639,2.7e-05,1.0,0.0 | 1.0 | 2.0,False
+tot_coll_amt,62,2190392,0.031101,1.0,722.0 | 0.0 | 8341.0,False
+tot_cur_bal,63,2190392,0.031101,1.0,144904.0 | 204396.0 | 189699.0,True
+open_acc_6m,64,1394538,0.383139,1.0,2.0 | 1.0 | 0.0,False
+open_act_il,65,1394539,0.383139,1.0,2.0 | 1.0 | 3.0,False
+open_il_12m,66,1394539,0.383139,1.0,0.0 | 2.0 | 1.0,False
+open_il_24m,67,1394539,0.383139,1.0,1.0 | 4.0 | 3.0,False
+mths_since_rcnt_il,68,1350744,0.402511,1.0,21.0 | 19.0 | 23.0,False
+total_bal_il,69,1394539,0.383139,1.0,4981.0 | 18005.0 | 10827.0,False
+il_util,70,1191818,0.47281,1.0,36.0 | 73.0 | 70.0,False
+open_rv_12m,71,1394539,0.383139,1.0,3.0 | 2.0 | 0.0,False
+open_rv_24m,72,1394539,0.383139,1.0,3.0 | 2.0 | 1.0,False
+max_bal_bc,73,1394539,0.383139,1.0,722.0 | 6472.0 | 2081.0,False
+all_util,74,1394320,0.383236,1.0,34.0 | 29.0 | 65.0,False
+total_rev_hi_lim,75,2190392,0.031101,1.0,9300.0 | 111800.0 | 14000.0,True
+inq_fi,76,1394539,0.383139,1.0,3.0 | 0.0 | 2.0,False
+total_cu_tl,77,1394538,0.383139,1.0,1.0 | 0.0 | 5.0,False
+inq_last_12m,78,1394538,0.383139,1.0,4.0 | 6.0 | 1.0,False
+acc_open_past_24mths,79,2210638,0.022145,1.0,4.0 | 6.0 | 2.0,True
+avg_cur_bal,80,2190322,0.031131,1.0,20701.0 | 9733.0 | 31617.0,True
+bc_open_to_buy,81,2185733,0.033161,1.0,1506.0 | 57830.0 | 2737.0,False
+bc_util,82,2184597,0.033664,1.0,37.2 | 27.1 | 55.9,True
+chargeoff_within_12_mths,83,2260523,7.9e-05,1.0,0.0 | 1.0 | 2.0,False
+delinq_amnt,84,2260639,2.7e-05,1.0,0.0 | 687.0 | 40.0,False
+mo_sin_old_il_acct,85,2121597,0.061531,1.0,148.0 | 113.0 | 125.0,False
+mo_sin_old_rev_tl_op,86,2190391,0.031101,1.0,128.0 | 192.0 | 184.0,False
+mo_sin_rcnt_rev_tl_op,87,2190391,0.031101,1.0,3.0 | 2.0 | 14.0,False
+mo_sin_rcnt_tl,88,2190392,0.031101,1.0,3.0 | 2.0 | 14.0,True
+mort_acc,89,2210638,0.022145,1.0,1.0 | 4.0 | 5.0,True
+mths_since_recent_bc,90,2187256,0.032488,1.0,4.0 | 2.0 | 101.0,False
+mths_since_recent_bc_dlq,91,519701,0.770115,1.0,69.0 | 12.0 | 48.0,False
+mths_since_recent_inq,92,1965233,0.130698,1.0,4.0 | 0.0 | 10.0,True
+mths_since_recent_revol_delinq,93,740359,0.672509,1.0,69.0 | 6.0 | 12.0,False
+num_accts_ever_120_pd,94,2190392,0.031101,1.0,2.0 | 0.0 | 1.0,False
+num_actv_bc_tl,95,2190392,0.031101,1.0,2.0 | 5.0 | 4.0,False
+num_actv_rev_tl,96,2190392,0.031101,1.0,4.0 | 5.0 | 3.0,True
+num_bc_sats,97,2202078,0.025931,1.0,2.0 | 13.0 | 8.0,False
+num_bc_tl,98,2190392,0.031101,1.0,5.0 | 17.0 | 4.0,False
+num_il_tl,99,2190392,0.031101,1.0,3.0 | 6.0 | 2.0,False
+num_op_rev_tl,100,2190392,0.031101,1.0,4.0 | 20.0 | 10.0,False
+num_rev_accts,101,2190391,0.031101,1.0,9.0 | 27.0 | 7.0,False
+num_rev_tl_bal_gt_0,102,2190392,0.031101,1.0,4.0 | 5.0 | 3.0,False
+num_sats,103,2202078,0.025931,1.0,7.0 | 22.0 | 6.0,False
+num_tl_120dpd_2m,104,2107011,0.067983,1.0,0.0 | 1.0 | 2.0,False
+num_tl_30dpd,105,2190392,0.031101,1.0,0.0 | 1.0 | 2.0,False
+num_tl_90g_dpd_24m,106,2190392,0.031101,1.0,0.0 | 1.0 | 2.0,False
+num_tl_op_past_12m,107,2190392,0.031101,1.0,3.0 | 2.0 | 0.0,True
+pct_tl_nvr_dlq,108,2190237,0.031169,1.0,76.9 | 97.4 | 100.0,False
+percent_bc_gt_75,109,2185289,0.033358,1.0,0.0 | 7.7 | 50.0,True
+pub_rec_bankruptcies,110,2259303,0.000618,1.0,0.0 | 1.0 | 2.0,True
+tax_liens,111,2260563,6.1e-05,1.0,0.0 | 2.0 | 1.0,True
+tot_hi_cred_lim,112,2190392,0.031101,1.0,178050.0 | 314017.0 | 218418.0,False
+total_bal_ex_mort,113,2210638,0.022145,1.0,7746.0 | 39475.0 | 18696.0,False
+total_bc_limit,114,2210638,0.022145,1.0,2400.0 | 79300.0 | 6200.0,False
+total_il_high_credit_limit,115,2190392,0.031101,1.0,13734.0 | 24667.0 | 14877.0,False
+revol_bal_joint,116,108020,0.952218,1.0,7101.0 | 22716.0 | 16495.0,False
+sec_app_fico_range_low,117,108021,0.952218,1.0,610.0 | 665.0 | 670.0,False
+sec_app_fico_range_high,118,108021,0.952218,1.0,614.0 | 669.0 | 674.0,False
+sec_app_earliest_cr_line,119,108021,0.952218,0.0,Feb-2005 | Oct-1987 | Feb-2013,False
+sec_app_inq_last_6mths,120,108021,0.952218,1.0,3.0 | 0.0 | 2.0,False
+sec_app_mort_acc,121,108021,0.952218,1.0,1.0 | 0.0 | 2.0,False
+sec_app_open_acc,122,108021,0.952218,1.0,14.0 | 8.0 | 10.0,False
+sec_app_revol_util,123,106184,0.95303,1.0,80.0 | 44.1 | 59.0,False
+sec_app_open_act_il,124,108021,0.952218,1.0,11.0 | 1.0 | 0.0,False
+sec_app_num_rev_accts,125,108021,0.952218,1.0,8.0 | 6.0 | 16.0,False
+sec_app_chargeoff_within_12_mths,126,108021,0.952218,1.0,0.0 | 4.0 | 14.0,False
+sec_app_collections_12_mths_ex_med,127,108021,0.952218,1.0,2.0 | 0.0 | 1.0,False
+sec_app_mths_since_last_major_derog,128,35942,0.984101,1.0,37.0 | 23.0 | 26.0,False
+hardship_flag,129,2260668,1.5e-05,0.0,N | Y,True
+hardship_type,130,10917,0.995171,0.0,INTEREST ONLY-3 MONTHS DEFERRAL,False
+hardship_reason,131,10917,0.995171,0.0,NATURAL_DISASTER | DIVORCE | EXCESSIVE_OBLIGATIONS,False
+hardship_status,132,10917,0.995171,0.0,BROKEN | COMPLETED | ACTIVE,False
+deferral_term,133,10917,0.995171,1.0,3.0,False
+hardship_amount,134,10917,0.995171,1.0,47.01 | 147.47 | 213.98,False
+hardship_start_date,135,10917,0.995171,0.0,Sep-2017 | Jul-2017 | Sep-2018,False
+hardship_end_date,136,10917,0.995171,0.0,Dec-2017 | Nov-2017 | Oct-2017,False
+payment_plan_start_date,137,10917,0.995171,0.0,Oct-2017 | Sep-2017 | Aug-2017,False
+hardship_length,138,10917,0.995171,1.0,3.0,False
+hardship_dpd,139,10917,0.995171,1.0,26.0 | 0.0 | 18.0,False
+hardship_loan_status,140,10917,0.995171,0.0,Late (16-30 days) | Current | Late (31-120 days),False
+orig_projected_additional_accrued_interest,141,8651,0.996173,1.0,442.41 | 641.94 | 108.21,False
+hardship_payoff_balance_amount,142,10917,0.995171,1.0,3058.14 | 12014.81 | 18761.48,False
+hardship_last_payment_amount,143,10917,0.995171,1.0,61.23 | 6.27 | 275.35,False
+disbursement_method,144,2260668,1.5e-05,0.0,Cash | DirectPay,False
+debt_settlement_flag,145,2260668,1.5e-05,0.0,N | Y,True
+debt_settlement_flag_date,146,34246,0.984852,0.0,Nov-2017 | May-2018 | Feb-2019,False
+settlement_status,147,34246,0.984852,0.0,COMPLETE | BROKEN | ACTIVE,False
+settlement_date,148,34246,0.984852,0.0,Sep-2017 | Nov-2017 | Jan-2018,False
+settlement_amount,149,34246,0.984852,1.0,9915.0 | 2761.0 | 4382.0,False
+settlement_percentage,150,34246,0.984852,1.0,55.0 | 50.01 | 44.99,False
+settlement_term,151,34246,0.984852,1.0,1.0 | 10.0 | 12.0,False

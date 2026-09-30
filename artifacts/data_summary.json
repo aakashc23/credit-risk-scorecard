@@ -1,0 +1,112 @@
+{
+  "row_counts": {
+    "rows_read": 2260668,
+    "rows_36m_in_windows": 546165,
+    "rows_with_known_outcome": 546018,
+    "rows_per_split": {
+      "train": 184094,
+      "test": 78898,
+      "oot": 283026
+    }
+  },
+  "target": {
+    "n_total": 546165,
+    "status_counts": {
+      "Fully Paid": 469193,
+      "Charged Off": 76825,
+      "Current": 72,
+      "Late (31-120 days)": 61,
+      "In Grace Period": 9,
+      "Late (16-30 days)": 5
+    },
+    "n_bad": 76825,
+    "n_good": 469193,
+    "n_indeterminate": 147,
+    "bad_rate": 0.1407004897274449
+  },
+  "candidate_features": [
+    "loan_amnt",
+    "home_ownership",
+    "annual_inc",
+    "verification_status",
+    "purpose",
+    "application_type",
+    "dti",
+    "delinq_2yrs",
+    "inq_last_6mths",
+    "mths_since_last_delinq",
+    "mths_since_last_record",
+    "open_acc",
+    "pub_rec",
+    "revol_bal",
+    "revol_util",
+    "total_acc",
+    "mort_acc",
+    "pub_rec_bankruptcies",
+    "acc_open_past_24mths",
+    "bc_util",
+    "num_actv_rev_tl",
+    "percent_bc_gt_75",
+    "tot_cur_bal",
+    "total_rev_hi_lim",
+    "mo_sin_rcnt_tl",
+    "num_tl_op_past_12m",
+    "avg_cur_bal",
+    "mths_since_recent_inq",
+    "tax_liens",
+    "collections_12_mths_ex_med",
+    "credit_history_months",
+    "fico_mid",
+    "emp_length_years",
+    "loan_to_income",
+    "revol_bal_to_income"
+  ],
+  "dropped_high_missing": [],
+  "selection": {
+    "dropped_low_iv": [
+      "purpose",
+      "emp_length_years",
+      "revol_util",
+      "total_acc",
+      "verification_status",
+      "loan_amnt",
+      "revol_bal_to_income",
+      "mths_since_last_record",
+      "pub_rec",
+      "delinq_2yrs",
+      "pub_rec_bankruptcies",
+      "mths_since_last_delinq",
+      "open_acc",
+      "application_type",
+      "collections_12_mths_ex_med",
+      "tax_liens"
+    ],
+    "suspicious_iv": [],
+    "dropped_correlated": {
+      "tot_cur_bal": "avg_cur_bal",
+      "bc_util": "percent_bc_gt_75",
+      "inq_last_6mths": "mths_since_recent_inq",
+      "revol_bal": "total_rev_hi_lim"
+    },
+    "dropped_cap": []
+  },
+  "dropped_wrong_sign": [],
+  "final_features": [
+    "fico_mid",
+    "annual_inc",
+    "avg_cur_bal",
+    "total_rev_hi_lim",
+    "acc_open_past_24mths",
+    "dti",
+    "num_tl_op_past_12m",
+    "mort_acc",
+    "loan_to_income",
+    "home_ownership",
+    "percent_bc_gt_75",
+    "mo_sin_rcnt_tl",
+    "mths_since_recent_inq",
+    "credit_history_months",
+    "num_actv_rev_tl"
+  ],
+  "suspicious_iv": []
+}

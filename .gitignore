@@ -33,3 +33,8 @@ kaggle.json
 Thumbs.db
 .vscode/
 .idea/
+
+# Local dev / logs
+.dev_artifacts/
+*.log
+*.partial
