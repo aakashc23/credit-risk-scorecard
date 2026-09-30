@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T20:16:09+00:00",
+  "generated_at": "2026-09-30T20:20:10+00:00",
   "sample": null,
   "data_file": "lc_accepted_2007_2018Q4_extract.parquet",
   "splits": {
@@ -84,5 +84,5 @@
       "ratio_expected_to_realised": 0.8495815626936002
     }
   },
-  "scorecard_points_max_abs_gap_oot": 83.15710699318674
+  "scorecard_points_max_abs_gap_oot": 4.046509099739296
 }

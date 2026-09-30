@@ -13,6 +13,7 @@ Usage:  python scripts/fetch_data.py [--force]
 from __future__ import annotations
 
 import argparse
+import contextlib
 import hashlib
 import importlib.util
 import io
@@ -105,10 +106,8 @@ class HashingReader(io.RawIOBase):
         if self.reconnects > self.MAX_RECONNECTS:
             raise ConnectionError("too many reconnects")
         time.sleep(min(30, 2 * self.reconnects))
-        try:
-            self.resp.close()
-        except Exception:
-            pass
+        with contextlib.suppress(requests.RequestException, OSError):
+            self.resp.close()  # the old connection is already broken; closing is best-effort
         r = requests.get(URL, stream=True, allow_redirects=True, timeout=(30, 300),
                          headers={"Accept-Encoding": "identity", "Range": f"bytes={self.nbytes}-",
                                   "User-Agent": "credit-risk-scorecard-fetch/1.0"})
