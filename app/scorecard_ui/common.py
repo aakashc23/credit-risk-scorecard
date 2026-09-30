@@ -121,9 +121,14 @@ def header(title: str, subtitle: str) -> None:
     st.caption(subtitle)
 
 
+def md(text: str) -> str:
+    """Escape ``$`` so dollar amounts are not parsed as LaTeX by Streamlit's markdown."""
+    return text.replace("$", r"\$")
+
+
 def takeaway(text: str) -> None:
     """One plain-English line under a chart. Callers build ``text`` from the data."""
-    st.markdown(f":blue[**Takeaway.**] {text}")
+    st.markdown(f":blue[**Takeaway.**] {md(text)}")
 
 
 def metric_row(tiles: list[tuple], columns: int | None = None) -> None:

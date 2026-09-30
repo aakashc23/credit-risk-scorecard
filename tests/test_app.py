@@ -179,3 +179,28 @@ def test_missing_artifacts_show_a_warning_not_a_crash(view, tmp_path, monkeypatc
     at = open_view(view)
     assert not at.exception, [e.value for e in at.exception]
     assert any("run_pipeline" in w.value for w in at.warning)
+
+
+def test_app_path_does_not_import_heavy_libraries():
+    """The dashboard must run on Streamlit Cloud with only the light requirements.txt."""
+    import subprocess
+    import sys
+
+    code = (
+        "import sys\n"
+        f"sys.path[:0] = [{str(SRC_DIR)!r}, {str(APP_DIR)!r}]\n"
+        "for name in ('sklearn', 'scipy', 'duckdb', 'matplotlib'):\n"
+        "    sys.modules[name] = None  # any import of these now raises ImportError\n"
+        "from scorecard_ui import applicant, method, overview, simulator, validation\n"
+        "from scorecard.predict import score_applicant\n"
+    )
+    done = subprocess.run([sys.executable, "-c", code], capture_output=True, text=True, check=False)
+    assert done.returncode == 0, done.stderr[-800:]
+
+
+def test_requirements_cover_app_imports():
+    lines = (ROOT / "requirements.txt").read_text().lower().splitlines()
+    wanted = {"pandas", "numpy", "pyarrow", "plotly", "streamlit"}
+    listed = {ln.split(">")[0].split("=")[0].strip() for ln in lines if ln and ln[0] != "#"}
+    assert wanted <= listed
+    assert not listed & {"scikit-learn", "scipy", "duckdb", "matplotlib"}

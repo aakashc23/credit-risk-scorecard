@@ -23,7 +23,7 @@ def _funnel(summary: dict, metrics: dict | None) -> None:
     read, window, known = (v for _, v in steps)
     c.takeaway(f"Of {c.num(read)} rows read, {c.pct(window / read if read else float('nan'))} are "
                f"{config.TERM_MONTHS}-month loans issued in the study window, and "
-               f"{c.pct(known / window if window else float('nan'))} of those have a known "
+               f"{c.pct(known / window if window else float('nan'), 2)} of those have a known "
                "good/bad outcome.")
     per_split = counts["rows_per_split"]
     rows = []

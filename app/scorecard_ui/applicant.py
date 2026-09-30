@@ -104,11 +104,11 @@ def render() -> None:
                         "Cut-off Simulator page.")
 
         st.markdown("**Expected loss = PD x LGD x EAD**")
-        st.markdown(f"{c.pct(result['pd'], 2)} x {c.pct(result['lgd'])} x "
-                    f"{c.usd(result['ead'])} = **{c.usd(result['expected_loss'])}**")
-        st.caption(f"EAD = loan amount {c.usd(result['loan_amnt'])} x EAD ratio "
-                   f"{c.pct(result['ead_ratio'])}. LGD and the EAD ratio are portfolio-wide "
-                   "estimates from past defaults, not specific to this applicant.")
+        st.markdown(c.md(f"{c.pct(result['pd'], 2)} x {c.pct(result['lgd'])} x "
+                         f"{c.usd(result['ead'])} = **{c.usd(result['expected_loss'])}**"))
+        st.caption(c.md(f"EAD = loan amount {c.usd(result['loan_amnt'])} x EAD ratio "
+                        f"{c.pct(result['ead_ratio'])}. LGD and the EAD ratio are portfolio-wide "
+                        "estimates from past defaults, not specific to this applicant."))
 
     st.subheader("What pushed the score up or down?")
     _points_chart(result)

@@ -16,7 +16,7 @@ from scorecard.predict import (
     required_inputs,
     score_applicant,
 )
-from scorecard.scoring import risk_band, score_to_pd
+from scorecard.scoring import factor, offset, risk_band, score_to_pd
 from scorecard.woe import fit_bins
 
 
@@ -153,7 +153,7 @@ def test_derived_and_categorical_features():
     bins = {"loan_to_income": fit_bins(df["loan_to_income"], y, "numeric"),
             "purpose": fit_bins(df["purpose"], y, "categorical")}
     features = ["loan_to_income", "purpose"]
-    scaling = {"factor": 72.13, "offset": 483.9}
+    scaling = {"factor": factor(), "offset": offset()}
     payload = model_payload(features, -1.5, [-1.0, -0.8], scaling,
                             {"lgd": 0.9, "ead_ratio": 0.6}, {})
     model = ScoringModel(features=features, intercept=payload["intercept"],

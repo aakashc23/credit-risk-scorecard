@@ -170,13 +170,13 @@ def render() -> None:
     if s["n_approved"] == 0:
         st.info("No applicants are approved at this cut-off. Lower it to see results.")
     else:
-        st.info(
+        st.info(c.md(
             f"At a cut-off of **{cutoff}** we approve **{c.num(s['n_approved'])} of "
             f"{c.num(s['n_total'])}** applicants (**{c.pct(s['approval_rate'])}**). The expected "
             f"bad rate is **{c.pct(s['expected_bad_rate'])}**, versus "
             f"**{c.pct(total['expected_bad_rate'])}** if we approved everyone. Expected loss is "
             f"**{c.usd(s['expected_loss'])}**, which is **{c.pct(s['expected_loss_rate'])}** of "
-            f"approved exposure.", icon=":material/lightbulb:")
+            f"approved exposure."), icon=":material/lightbulb:")
 
     st.subheader("Who gets approved?")
     _distribution_chart(cutoff, _histograms(path, mtime), s, total)

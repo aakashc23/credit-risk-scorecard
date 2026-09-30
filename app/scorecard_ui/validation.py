@@ -175,7 +175,7 @@ def _points_block(metrics: dict) -> None:
         return
     features = [f for f in metrics["features"] if f in set(points["feature"])]
     feature = st.selectbox("Feature", features, format_func=feature_label, key="points_feature")
-    p = points[points["feature"] == feature]
+    p = points[(points["feature"] == feature) & (points["n"] > 0)]  # skip empty catch-all rows
     fig = go.Figure(go.Bar(
         x=p["bin"], y=p["points"], marker_color=c.BLUE, text=[f"{v:.0f}" for v in p["points"]],
         textposition="outside", customdata=p["bad_rate"],
@@ -189,6 +189,8 @@ def _points_block(metrics: dict) -> None:
                f"{lo['points']:.0f} ({c.pct(lo['bad_rate'])}): a {hi['points'] - lo['points']:.0f}"
                "-point swing from this one feature.")
     with st.expander("Full scorecard points table"):
+        st.caption("An `Unbinned` row (0 loans) is the neutral score for a value that falls in "
+                   "no bin, e.g. a field that was never blank in the training data.")
         shown = points.assign(feature=points["feature"].map(feature_label),
                               bad_rate=points["bad_rate"] * 100)
         st.dataframe(shown, hide_index=True, column_config={

@@ -47,6 +47,18 @@ pytest -q
 streamlit run app/streamlit_app.py
 ```
 
+## Dashboard
+`streamlit run app/streamlit_app.py` opens five pages: **Overview**, **Cut-off Simulator**,
+**Score an Applicant**, **Model & Validation** and **Data & Method**. It reads only the small
+files in `artifacts/` (never raw data) and scores single applicants from the saved WOE bins and
+coefficients with numpy, so it needs no scikit-learn. To deploy on Streamlit Community Cloud,
+point the app at `app/streamlit_app.py`; `requirements.txt` holds its few dependencies.
+
+To try the dashboard without the real data, build fake artifacts with
+`python scripts/make_dev_artifacts.py` and set `SCORECARD_ARTIFACTS_DIR=.dev_artifacts/artifacts`
+(see `.env.example`). An optional Power BI version of the simulator is described in
+[docs/powerbi_guide.md](docs/powerbi_guide.md) (no `.pbix` is included).
+
 ## Repo layout
 See [CLAUDE.md](CLAUDE.md#layout). Methodology: [docs/methodology.md](docs/methodology.md).
 Decision log: [docs/decisions.md](docs/decisions.md).
