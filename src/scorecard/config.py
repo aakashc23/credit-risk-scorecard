@@ -12,7 +12,7 @@ ARTIFACTS = ROOT / "artifacts"
 FIGURES = ROOT / "reports" / "figures"
 SQL_DIR = ROOT / "sql"
 
-RAW_FILENAME = "accepted_2007_to_2018Q4.csv.gz"  # Kaggle: wordsforthewise/lending-club
+RAW_FILENAME = "lc_accepted_2007_2018Q4_extract.parquet"  # extract of the Kaggle Lending Club file
 RAW_PATH = DATA_RAW / RAW_FILENAME
 
 RANDOM_STATE = 42
@@ -81,6 +81,9 @@ CANDIDATE_FEATURES = [
     "tax_liens",
     "collections_12_mths_ex_med",
 ]
+
+# Categorical model inputs (everything else in CANDIDATE_FEATURES is numeric or engineered).
+CATEGORICAL_FEATURES = ["home_ownership", "verification_status", "purpose", "application_type"]
 
 # Known at origination but deliberately NOT model features.
 BENCHMARK_COLS = ["grade", "sub_grade", "int_rate", "installment"]  # LC's own pricing model
