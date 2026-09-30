@@ -3,10 +3,12 @@
 Planned with Opus; implemented phase by phase. Each phase follows the same loop:
 inspect → plan → implement → run → test → fix → document.
 
+**Status (2026-10-01): all phases complete.** Live app: https://credit-risk-scorecard-aakash.streamlit.app
+
 | Phase | Scope | Deliverables | Needs real data? |
 |---|---|---|---|
 | 0 | Scaffold | structure, CLAUDE.md, README, config, docs, git | no ✅ |
-| 1 | Data acquisition | `data/raw/accepted_2007_to_2018Q4.csv.gz` | **user action** |
+| 1 | Data acquisition | `scripts/fetch_data.py` → `data/raw/lc_accepted_2007_2018Q4_extract.parquet` | done ✅ |
 | 2 | Core library + tests | `src/scorecard/*` modules, synthetic-data pytest suite, pipeline smoke test | no |
 | 3 | Real run: data prep + SQL | interim parquet, status mix, missingness by year, DuckDB profiling CSVs | yes |
 | 4 | Real run: WOE/IV, model, scaling | iv_table.csv, woe_bins.json, scorecard_points.csv, model coefficients | yes |

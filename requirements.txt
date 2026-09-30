@@ -2,6 +2,6 @@
 # The dashboard only reads artifacts/ — it does not need the raw data or to re-train.
 pandas>=2.1
 numpy>=1.26
-pyarrow>=14
+pyarrow>=14,<25  # Streamlit Cloud replaces 25.0.1 (known segfault, apache/arrow#50471)
 plotly>=5.20
 streamlit>=1.46

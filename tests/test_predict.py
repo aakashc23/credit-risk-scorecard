@@ -121,8 +121,8 @@ def test_matches_pipeline_score_row_by_row(synthetic_run, model):
 
 
 @pytest.mark.parametrize("score, band", [
-    (850, "Very Low"), (740, "Very Low"), (739, "Low"), (680, "Low"), (679, "Medium"),
-    (620, "Medium"), (619, "High"), (560, "High"), (559, "Very High"), (300, "Very High"),
+    (850, "Very Low"), (700, "Very Low"), (699, "Low"), (650, "Low"), (649, "Medium"),
+    (600, "Medium"), (599, "High"), (550, "High"), (549, "Very High"), (300, "Very High"),
 ])
 def test_risk_band_boundaries(score, band):
     assert risk_band(score) == band

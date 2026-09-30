@@ -140,13 +140,15 @@ N_DECILES = 10
 
 # --------------------------------------------------------------------------- risk bands / app
 # (minimum score, label), best band first. A score falls in the first band whose minimum it
-# meets. With the 650 @ 10:1, PDO 50 scaling these thresholds imply PDs of roughly
-# 2.8% (740), 6% (680), 13% (620) and 26% (560) -- i.e. each band step about doubles the risk.
+# meets. Bands are 50 points (= one PDO) wide, so each step doubles the odds of default.
+# With the 650 @ 10:1, PDO 50 scaling the thresholds imply PDs of roughly 4.8% (700),
+# 9.1% (650), 16.7% (600) and 28.6% (550). On 2015 loans "Medium" (600-649) holds ~40% of
+# applicants with a 14.2% bad rate, close to the 14.9% portfolio average.
 RISK_BANDS = [
-    (740, "Very Low"),
-    (680, "Low"),
-    (620, "Medium"),
-    (560, "High"),
+    (700, "Very Low"),
+    (650, "Low"),
+    (600, "Medium"),
+    (550, "High"),
     (SCORE_MIN, "Very High"),
 ]
 # The simulator opens at the highest cut-off that still approves at least this share of applicants.

@@ -1,8 +1,10 @@
 # Data Dictionary
 
 ## Getting the data
-1. Download `accepted_2007_to_2018Q4.csv.gz` from Kaggle (`wordsforthewise/lending-club`).
-2. Place it at `data/raw/accepted_2007_to_2018Q4.csv.gz`. Leave it unzipped. Do not edit it.
+Run `python scripts/fetch_data.py`. It streams the Lending Club accepted-loans CSV (same file
+as Kaggle `wordsforthewise/lending-club`) and verifies its SHA-256. It writes a column-subset
+parquet to `data/raw/lc_accepted_2007_2018Q4_extract.parquet` without storing the 1.68 GB CSV.
+See [data_source.md](data_source.md). The pipeline also accepts the original `.csv`/`.csv.gz`.
 
 ## Columns used
 | Column | Role | Notes |

@@ -1,10 +1,11 @@
 # Methodology
 
-Planned method. Sections are updated with actual results once the pipeline runs. Any
-number here must come from `artifacts/`.
+As implemented. Results are in the [README](../README.md#model--validation) and
+`artifacts/metrics.json`. Any number here comes from `artifacts/`.
 
 ## 1. Data
-- Source: Lending Club accepted loans 2007–2018Q4 (`accepted_2007_to_2018Q4.csv.gz`, Kaggle
+- Source: Lending Club accepted loans 2007–2018Q4 (`accepted_2007_to_2018Q4.csv`, fetched and
+  SHA-256-verified by `scripts/fetch_data.py`; identical to Kaggle
   `wordsforthewise/lending-club`). The raw file is read-only.
 - Only the columns we need are read, in chunks, so memory stays low.
 
@@ -12,7 +13,7 @@ number here must come from `artifacts/`.
 | Choice | Value | Why |
 |---|---|---|
 | Term | 36 months only | One term keeps the outcome window consistent, and 36m loans from ≤2015 are mature in a 2018Q4 snapshot. |
-| Development window | 2012-01 to 2014-12 issue dates | Recent enough that bureau fields are populated, and mature. |
+| Development window | 2013-01 to 2014-12 issue dates | Mature, and bureau fields are populated (2012 vintages have ~52% of them missing). |
 | Out-of-time (OOT) window | 2015-01 to 2015-12 | Simulates scoring future applicants. |
 | Train/test | 70/30 stratified random split inside the development window | In-time check for overfitting. |
 
