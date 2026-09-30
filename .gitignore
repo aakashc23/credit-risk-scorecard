@@ -1,0 +1,35 @@
+# Data (never commit raw / intermediate data)
+data/raw/*
+data/interim/*
+data/processed/*
+!data/**/.gitkeep
+*.csv.gz
+*.zip
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Secrets
+.env
+kaggle.json
+.streamlit/secrets.toml
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

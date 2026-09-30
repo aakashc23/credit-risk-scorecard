@@ -1,0 +1,7 @@
+# Runtime deps for the Streamlit dashboard (Streamlit Community Cloud reads this file).
+# The dashboard only reads artifacts/ — it does not need the raw data or to re-train.
+pandas>=2.1
+numpy>=1.26
+pyarrow>=14
+plotly>=5.20
+streamlit>=1.35
